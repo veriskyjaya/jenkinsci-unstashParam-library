@@ -25,12 +25,14 @@ def call(String name, String fname = null) {
        }
 
                 filename = fname == null ? param.getOriginalFileName() : fname
-                file = workspace.child(filename)
+                if(filename.size() >0) {
+                    file = workspace.child(filename)
 
-                destFolder = file.getParent()
-                destFolder.mkdirs()
+                    destFolder = file.getParent()
+                    destFolder.mkdirs()
 
-                file.copyFrom(param.getFile())
+                    file.copyFrom(param.getFile())
+                }
                 return filename;
             }
         }
